@@ -1,20 +1,7 @@
-/***************
- **   @author: Hariom Singh
- **  Date: 26/02/22
- *****************/
-class Node {
-    int val;
-    Node next;
+package com.shashtra.datastructure.linkedlist;
 
-    Node(int val) {
-        this.val = val;
-        next = null; //by default, it's assigned to null
-    }
-}
-
-public class LinkedList {
-    Node head;
-
+class LinkedList {
+    private Node head;
 
     /**
      * @param val create new node with val and
@@ -58,7 +45,6 @@ public class LinkedList {
         new_node.next = PrevNode.next;
         PrevNode.next = new_node;
     }
-
 
     /**
      * Used to print the given linked list
