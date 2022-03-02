@@ -1,7 +1,35 @@
 package com.shashtra.datastructure.linkedlist;
 
+class Node {
+    int val;
+    Node next;
+
+    Node(int val) {
+        this.val = val;
+        next = null; //by default, it's assigned to null
+    }
+}
+
 class LinkedList {
     private Node head;
+
+    public static void main(String[] args) {
+
+        LinkedList list = new LinkedList();
+        //list.head = new Node(1);
+        //Node second = new Node(2);
+        //list.head.next = second;
+        //list.insertAtEnd(3);
+        //list.insertAfterGivenNode(list.head.next, 3);
+        list.insertAtEnd(4);
+        list.insertAtFront(0);
+        list.insertAtEnd(5);
+        for (int i = 6; i < 10; i++)
+            list.insertAtEnd(i);
+        list.printList();
+        System.out.println("Length of linked list: " + list.ListLength());
+
+    }
 
     /**
      * @param val create new node with val and

@@ -14,6 +14,26 @@ public class Stack {
         top = -1;
     }
 
+    public static void main(String[] args) {
+        Stack myStack = new Stack();
+        myStack.push(1);
+        myStack.push(2);
+
+        System.out.println("Is stack empty? " + myStack.isEmpty());
+        try {
+            System.out.println("Current top element on stack: " + myStack.top());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            System.out.println("Removing: " + myStack.pop());
+            System.out.println("Current top element: " + myStack.top());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     void push(int val) {
         if (top == max_size) {
             System.out.println("Stack is full, remove first to insert");
