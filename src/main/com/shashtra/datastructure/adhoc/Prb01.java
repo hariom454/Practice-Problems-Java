@@ -1,3 +1,5 @@
+package com.shashtra.datastructure.adhoc;
+
 import java.util.Scanner;
 
 /***************
@@ -9,8 +11,7 @@ public class Prb01 {
 
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
-        while( t --> 0)
-        {
+        while( t --> 0) {
             int n= in.nextInt();
             System.out.println( isPrime(n) ? "yes" : "no");
         }
@@ -18,12 +19,10 @@ public class Prb01 {
 
     private static boolean isPrime(int n) {
 
-        if( n <= 1)
-        {
+        if( n <= 1) {
             return false;
         }
-        for(long i = 2; i * i <= n; i ++)
-        {
+        for(long i = 2; i * i <= n; i ++) {
             if( n % i == 0)
                 return false;
         }

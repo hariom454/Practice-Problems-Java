@@ -1,3 +1,5 @@
+package com.shashtra.datastructure.adhoc;
+
 import java.util.Scanner;
 
 /***************
@@ -11,8 +13,7 @@ public class Remiss {
         int t = in.nextInt();
         //System.out.println(t);
 
-        while( t --> 0)
-        {
+        while( t --> 0) {
             int a = in.nextInt(), b = in.nextInt();
             //in.next();
 
