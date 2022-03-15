@@ -21,7 +21,7 @@ public class Heap {
     }
 
     public static void main(String[] args) {
-        int n;
+        //int n;
         Scanner in = new Scanner(System.in);
         //n = in.nextInt();
         // Heap heap = new Heap(n);
