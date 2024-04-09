@@ -18,7 +18,7 @@ public class ZAlgorithm {
         int l = 0, r = 0;
         z[0] = 0;
         for (int i = 1; i < inputLen; i++) {
-            if (i > r) {
+            if (i > r) { //check if z value is already calculated
                 l = r = i;
                 while (r < inputLen && (inputString.charAt(r) == inputString.charAt(r - l))) {
                     r++;
