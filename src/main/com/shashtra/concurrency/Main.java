@@ -1,4 +1,4 @@
-package com.shashtra.threads;
+package com.shashtra.concurrency;
 
 import java.util.ArrayList;
 import java.util.List;

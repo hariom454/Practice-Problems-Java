@@ -1,4 +1,4 @@
-package com.shashtra.threads;
+package com.shashtra.concurrency;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;

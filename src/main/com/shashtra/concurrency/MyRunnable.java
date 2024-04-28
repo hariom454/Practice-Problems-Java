@@ -1,4 +1,4 @@
-package com.shashtra.threads;
+package com.shashtra.concurrency;
 
 public class MyRunnable implements Runnable {
 
