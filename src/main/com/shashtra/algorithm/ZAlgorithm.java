@@ -1,5 +1,7 @@
 package com.shashtra.algorithm;
 
+import java.util.ArrayList;
+
 /***************
  **   @author: Hariom Singh
  **  Date: 09/03/22
@@ -54,5 +56,10 @@ public class ZAlgorithm {
         for (int i = 0; i < inputString.length(); i++)
             System.out.printf("%d ", ans[i]);
         System.out.println();
+
+        ArrayList<String> a = new ArrayList<>();
+        a.sort((first, second) -> {
+            return first.compareTo(second);
+        });
     }
 }
