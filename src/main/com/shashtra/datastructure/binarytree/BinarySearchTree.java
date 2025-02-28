@@ -1,6 +1,7 @@
 package com.shashtra.datastructure.binarytree;
 
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BinarySearchTree {
 
@@ -123,6 +124,54 @@ public class BinarySearchTree {
     printPostorder(root.left);
     printPostorder(root.right);
     System.out.println(root.val + " ");
+  }
+
+  /**
+   * Given a binary tree and a sum, return true if the tree has a root-to-leaf path such that adding
+   * up all the values along the path equals the given sum. Return false if no such path can be
+   * found
+   *
+   * @param root root node of the tree
+   * @param sum  require path sum
+   * @return true if there exists a path with given sum. else, false
+   */
+  boolean hasPathSum(Node root, int sum) {
+    if (root == null && sum == 0) {
+      return true;
+    }
+    if (root == null) {
+      return false;
+    }
+    return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+  }
+
+  private void printPathUtils(Node root, List<Node> path, List<List<Node>> allPaths) {
+    if (root == null) {
+      return; //no need to add any paths
+    }
+    path.add(root);
+
+    if (root.left == null || root.right == null) {
+      allPaths.add(path);
+    }
+    if (root.left != null) {
+      printPathUtils(root.left, new ArrayList<>(path), allPaths);
+    }
+    if (root.right != null) {
+      printPathUtils(root.right, new ArrayList<>(path), allPaths);
+    }
+
+  }
+
+  void printPaths(Node root) {
+    List<List<Node>> allPaths = new ArrayList<>();
+    printPathUtils(root, new ArrayList<>(), allPaths);
+    allPaths.forEach(path -> {
+      path.forEach(node -> {
+        System.out.print(node.val + " -> ");
+      });
+      System.out.println("null");
+    });
   }
 
 }
