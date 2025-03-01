@@ -27,11 +27,6 @@ public class BstTester {
     bst.printTree(tempRoot);
     System.out.println();
 
-//    Node temp = bst.mirror(tempRoot);
-//    System.out.println("Mirror tree inorder traversal: ");
-//    bst.printTree(temp);
-//    System.out.println();
-
     bst.doubleTree(tempRoot);
     System.out.println("tree after double root: ");
     bst.printTree(tempRoot);
@@ -51,6 +46,14 @@ public class BstTester {
 
     System.out.println("isBST2: " + bst.isBST2(root));
     System.out.println("isBST2: " + bst.isBST2(tempRoot));
+
+    bst.mirror(tempRoot);
+    System.out.println("Mirror tree inorder traversal: ");
+    bst.printTree(tempRoot);
+    System.out.println();
+
+    System.out.println("is BST after mirror?: " + bst.isBST2(tempRoot));
+
 
   }
 
