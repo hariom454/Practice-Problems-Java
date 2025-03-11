@@ -1,65 +1,62 @@
 package com.shashtra.algorithm;
 
-import java.util.ArrayList;
-
 /***************
  **   @author: Hariom Singh
  **  Date: 09/03/22
  *****************/
 public class ZAlgorithm {
-    String inputString;
-    private int inputLen;
 
-    public ZAlgorithm(String inputString) {
-        this.inputString = inputString;
-        inputLen = inputString.length();
-    }
+  String inputString;
+  private int inputLen;
 
-    int[] calculateZ() {
-        int z[] = new int[inputLen];
-        int l = 0, r = 0;
-        z[0] = 0;
-        for (int i = 1; i < inputLen; i++) {
-            if (i > r) { //check if z value is already calculated
-                l = r = i;
-                while (r < inputLen && (inputString.charAt(r) == inputString.charAt(r - l))) {
-                    r++;
-                }
-                z[i] = r - l;
-                r--;
-            } else {
-                int k = i - l; //offset
-                if (z[k] < r - i + 1)
-                    z[i] = z[k];
-                else {
-                    l = i;
-                    while (r < inputLen && (inputString.charAt(r) == inputString.charAt(r - l)))
-                        r++;
-                    z[i] = r - l;
-                    r--;
-                }
-            }
+  public ZAlgorithm(String inputString) {
+    this.inputString = inputString;
+    inputLen = inputString.length();
+  }
+
+  int[] calculateZ() {
+    int z[] = new int[inputLen];
+    int l = 0, r = 0;
+    z[0] = 0;
+    for (int i = 1; i < inputLen; i++) {
+      if (i > r) { //check if z value is already calculated
+        l = r = i;
+        while (r < inputLen && (inputString.charAt(r) == inputString.charAt(r - l))) {
+          r++;
         }
-        return z;
+        z[i] = r - l;
+        r--;
+      } else {
+        int k = i - l; //we have already visited i so, find what could be possible z value
+          //which is already calculated.
+          if (z[k] < r - i + 1) { //if it's not crossing the boundary, no need to calculate again
+              z[i] = z[k];
+          } else {
+              l = i;
+              while (r < inputLen && (inputString.charAt(r) == inputString.charAt(r - l))) {
+                  r++;
+              }
+              z[i] = r - l;
+              r--;
+          }
+      }
     }
+    return z;
+  }
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-        //Scanner in = new Scanner(System.in);
-        //String inputString = in.next();
-        String inputString = "abcabcab";
-        ZAlgorithm zalgo = new ZAlgorithm(inputString);
+    //Scanner in = new Scanner(System.in);
+    //String inputString = in.next();
+    String inputString = "abcabcab";
+    ZAlgorithm zalgo = new ZAlgorithm(inputString);
 
-        int ans[] = new int[inputString.length()];
-        ans = zalgo.calculateZ();
+    int ans[] = new int[inputString.length()];
+    ans = zalgo.calculateZ();
 
-        for (int i = 0; i < inputString.length(); i++)
-            System.out.printf("%d ", ans[i]);
-        System.out.println();
-
-        ArrayList<String> a = new ArrayList<>();
-        a.sort((first, second) -> {
-            return first.compareTo(second);
-        });
-    }
+      for (int i = 0; i < inputString.length(); i++) {
+          System.out.printf("%d ", ans[i]);
+      }
+    System.out.println();
+  }
 }
