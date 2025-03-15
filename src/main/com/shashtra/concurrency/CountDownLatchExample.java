@@ -11,7 +11,9 @@ public class CountDownLatchExample {
     CountDownLatch stopSignal = new CountDownLatch(n);
 
     for (int i = 0; i < n; i++) {
-      new Thread(new Worker(startTogether, stopSignal), "worker thread - " + i).start();
+      //new Thread(new Worker(startTogether, stopSignal), "worker thread - " + i).start();
+      Thread.startVirtualThread(new Worker(startTogether, stopSignal))
+          .setName("virtual worker thread - " + i);
     }
 
     doSomething();
@@ -35,8 +37,6 @@ class Worker implements Runnable {
   public Worker(CountDownLatch startSignal, CountDownLatch stopSignal) {
     this.startSignal = startSignal;
     this.stopSignal = stopSignal;
-
-
   }
 
   @Override
@@ -52,6 +52,8 @@ class Worker implements Runnable {
   }
 
   void performSomeTask() {
-    System.out.println("I have nothing to do " + Thread.currentThread().getName());
+    System.out.println(
+        "I have nothing to do, name: " + Thread.currentThread().getName() + " group: "
+            + Thread.currentThread().getThreadGroup());
   }
 }
