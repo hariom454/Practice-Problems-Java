@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 public class ProducerConsumerExample {
 
@@ -41,12 +40,10 @@ public class ProducerConsumerExample {
 
   }
 
-
   public static void main(String[] args) throws InterruptedException {
 
     try (ExecutorService executors = Executors.newVirtualThreadPerTaskExecutor()) {
-      List<Future<?>> futures = new ArrayList<>();
-      for (int i = 0; i < 100; i++) {
+      for (int i = 0; i < 100_000; i++) {
         executors.submit(() -> {
           try {
             producer();
